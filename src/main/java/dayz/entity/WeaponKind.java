@@ -3,11 +3,10 @@ package dayz.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "weaponKinds")
+@Table(name = "weapon_kinds")
 public class WeaponKind {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

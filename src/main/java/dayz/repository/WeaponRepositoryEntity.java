@@ -6,4 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface WeaponRepositoryEntity extends CrudRepository<Weapon,Long> {
+    Weapon findFirstByOrderByIdAsc();
 }

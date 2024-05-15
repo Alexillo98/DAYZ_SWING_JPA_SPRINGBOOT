@@ -13,12 +13,12 @@ public class Weapon {
     private String country;
 
     @ManyToOne
-    @JoinColumn(name = "weaponType")
-    private WeaponType weaponType;
+    @JoinColumn(name = "weapontype")
+    private WeaponType weapon_types;
 
     @ManyToOne
-    @JoinColumn(name = "weaponKind")
-    private WeaponKind weaponKind;
+    @JoinColumn(name = "weaponkind")
+    private WeaponKind weapon_kinds;
 
     // Add getters and setters here
 
@@ -47,19 +47,19 @@ public class Weapon {
         this.country = country;
     }
 
-    public WeaponType getWeaponType() {
-        return weaponType;
+    public WeaponType getWeapon_types() {
+        return weapon_types;
     }
 
-    public void setWeaponType(WeaponType weaponType) {
-        this.weaponType = weaponType;
+    public void setWeapon_types(WeaponType weapon_types) {
+        this.weapon_types = weapon_types;
     }
 
-    public WeaponKind getWeaponKind() {
-        return weaponKind;
+    public WeaponKind getWeapon_kinds() {
+        return weapon_kinds;
     }
 
-    public void setWeaponKind(WeaponKind weaponKind) {
-        this.weaponKind = weaponKind;
+    public void setWeapon_kinds(WeaponKind weapon_kinds) {
+        this.weapon_kinds = weapon_kinds;
     }
 }
