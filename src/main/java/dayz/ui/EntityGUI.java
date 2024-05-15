@@ -123,6 +123,8 @@ public class EntityGUI extends JFrame {
 
             this.idfield.setText(this.weapon.getId().toString());
             this.nameField.setText(this.weapon.getName());
+            this.kindField.setText(this.weapon.getWeapon_kinds().getName());
+            this.typeField.setText(this.weapon.getWeapon_types().getName());
             this.weaponTypeCombo.setSelectedItem(this.weapon.getWeapon_types());
         }else {
             if (this.entityState == GUI_STATES.NEW.ordinal()){

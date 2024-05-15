@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.---API NO FUNCIONA---">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/service/AppService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/entity/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryEntity.java" afterDir="false" />
+    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API.">
       <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +115,7 @@
       <workItem from="1715764788893" duration="162000" />
       <workItem from="1715780575462" duration="5904000" />
       <workItem from="1715787714854" duration="1685000" />
-      <workItem from="1715794047998" duration="5677000" />
+      <workItem from="1715794047998" duration="6081000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.">
       <option name="closed" value="true" />
@@ -155,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715789398573</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API.">
+      <option name="closed" value="true" />
+      <created>1715800087976</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715800087976</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +166,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar." />
     <MESSAGE value="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.---API NO FUNCIONA---" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.---API NO FUNCIONA---" />
+    <MESSAGE value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API." />
+    <option name="LAST_COMMIT_MESSAGE" value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
