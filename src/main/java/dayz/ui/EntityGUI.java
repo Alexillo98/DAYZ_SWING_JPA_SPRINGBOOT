@@ -17,4 +17,6 @@ public class EntityGUI extends JFrame {
     private WeaponRepositoryEntity weaponRepositoryEntity;
     private WeaponRepositoryPaging weaponRepositoryPaging;
     private WeaponTypeRepositoryEntity weaponTypeRepositoryEntity;
+
+
 }
