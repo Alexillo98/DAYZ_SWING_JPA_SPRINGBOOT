@@ -14,12 +14,13 @@ public class AppCountry {
         final Gson gson = new Gson();
         URL country = new URL("https://restcountries.com/v3.1/name/spain?fields=name,flags");
         BufferedReader in = new BufferedReader(new InputStreamReader(country.openStream(), StandardCharsets.UTF_8));
-        Country[]g = gson.fromJson(in, Country[].class);
+        Country[] g = gson.fromJson(in, Country[].class);
 
 
-        for (Country.flagsName fg: g[0].flagsNames) {
+/*        for (Country.flagsName fg: g[0].flagsNames) {
             System.out.println(fg);
-        }
+        }*/
+        System.out.println(g[0].flags.png);
 
         in.close();
     }
