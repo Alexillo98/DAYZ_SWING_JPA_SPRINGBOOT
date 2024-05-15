@@ -1,6 +1,6 @@
 package dayz.ui;
 
-import dayz.Weapon;
+import dayz.entity.Weapon;
 import dayz.repository.WeaponKindRepositoryEntity;
 import dayz.repository.WeaponRepositoryEntity;
 import dayz.repository.WeaponRepositoryPaging;

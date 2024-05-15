@@ -1,6 +1,6 @@
 package dayz.repository;
 
-import dayz.WeaponType;
+import dayz.entity.WeaponType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 

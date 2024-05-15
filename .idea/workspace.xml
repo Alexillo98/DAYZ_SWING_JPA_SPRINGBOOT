@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/SimpleDialogApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/Weapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/WeaponKind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/WeaponType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/Weapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponKind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponKindRepositoryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryPaging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponTypeRepositoryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +15,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Alexillo98"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Alexillo98/Dayz2.git",
+    "accountId": "d3eb2169-179c-4d3c-8b44-edc26acfa786"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2gTLAUY3IvnuOvAFp47md9jaRxu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -53,7 +47,11 @@
     "Spring Boot.SimpleDialogApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/alu10728702/052024DAWAM/PROGRAMACION/DayZ",
+    "last_opened_file_path": "E:/DAW/PROGRAMACION/Dayz2/src/main/resources/dayz.sqlite",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -67,10 +65,24 @@
       <recent name="dayz" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-6fbd92ee" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -84,6 +96,7 @@
       <updated>1715716478624</updated>
       <workItem from="1715716479693" duration="211000" />
       <workItem from="1715764788893" duration="162000" />
+      <workItem from="1715780575462" duration="469000" />
     </task>
     <servers />
   </component>
