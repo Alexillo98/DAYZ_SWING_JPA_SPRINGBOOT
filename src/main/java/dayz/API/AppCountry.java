@@ -20,7 +20,8 @@ public class AppCountry {
 /*        for (Country.flagsName fg: g[0].flagsNames) {
             System.out.println(fg);
         }*/
-        System.out.println(g[0].flags.png);
+
+        System.out.println(g[0].flags.alt);
 
         in.close();
     }
