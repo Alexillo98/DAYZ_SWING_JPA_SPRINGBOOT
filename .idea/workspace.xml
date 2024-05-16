@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.AppCountry.executor": "Run",
+    "Application.DayZ.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -57,7 +67,7 @@
     "Spring Boot.SimpleDialogApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/DAW/PROGRAMACION/Dayz2",
+    "last_opened_file_path": "/home/INFORMATICA/alu10728702/IdeaProjects/uniandes/SimuladorBancario",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,20 +86,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="DayZ" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="dayz.SimpleDialogApplication" />
-      <module name="swing-jpa-skeleton" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+      <module name="Dayz2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,8 +97,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-22-openjdk-22-4caba194b151-6fbd92ee" />
       </set>
     </attachedChunks>
   </component>
@@ -116,6 +114,9 @@
       <workItem from="1715780575462" duration="5904000" />
       <workItem from="1715787714854" duration="1685000" />
       <workItem from="1715794047998" duration="6081000" />
+      <workItem from="1715839552538" duration="369000" />
+      <workItem from="1715840096547" duration="4175000" />
+      <workItem from="1715844416260" duration="4440000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.">
       <option name="closed" value="true" />
