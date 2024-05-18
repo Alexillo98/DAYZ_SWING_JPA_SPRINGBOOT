@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponKindController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponTypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d0ef4cb-cb7e-46c4-aac2-b35c180e0d2e/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d06a4957-ca56-4aef-8ed8-e7b9590c41fd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d06a4957-ca56-4aef-8ed8-e7b9590c41fd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/SimpleDialogApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/SimpleDialogApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryPaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryPaging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" afterDir="false" />
     </list>
@@ -52,30 +54,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AppCountry.executor": "Run",
-    "Application.DayZ.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.SimpleDialogApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/INFORMATICA/alu10728702/IdeaProjects/uniandes/SimuladorBancario",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AppCountry.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SimpleDialogApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/DAW/PROGRAMACION/Dayz2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\DAW\PROGRAMACION\DayZ\src\main\java\dayz" />
@@ -86,9 +87,20 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="DayZ" type="Application" factoryName="Application">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dayz.SimpleDialogApplication" />
-      <module name="Dayz2" />
+      <module name="swing-jpa-skeleton" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -97,7 +109,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-6fbd92ee" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -114,9 +127,6 @@
       <workItem from="1715780575462" duration="5904000" />
       <workItem from="1715787714854" duration="1685000" />
       <workItem from="1715794047998" duration="6081000" />
-      <workItem from="1715839552538" duration="369000" />
-      <workItem from="1715840096547" duration="4175000" />
-      <workItem from="1715844416260" duration="4440000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.">
       <option name="closed" value="true" />

@@ -1,5 +1,6 @@
 package dayz;
 
+import dayz.ui.DayZGUI;
 import dayz.ui.EntityGUI;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,8 +24,10 @@ public class SimpleDialogApplication {
 
         EventQueue.invokeLater(()->{
             //obtenemos el objeto form a través de Spring
-            EntityGUI entityUI = context.getBean(EntityGUI.class);
-            entityUI.setVisible(true);
+            /*EntityGUI entityUI = context.getBean(EntityGUI.class);
+            entityUI.setVisible(true);*/
+            DayZGUI dayZGUI = context.getBean(DayZGUI.class);
+            dayZGUI.setVisible(true);
         });
     }
 }

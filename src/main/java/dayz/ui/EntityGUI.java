@@ -67,7 +67,7 @@ public class EntityGUI extends JFrame {
         initComponents();
         bindData();
         updateFields();
-        layoutComponents2();
+/*        layoutComponents2();*/
     }
 
     private void initComponents(){
@@ -140,7 +140,7 @@ public class EntityGUI extends JFrame {
 
 
     }*/
-
+/*
     private void layoutComponents2(){
         // Crear un JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -211,7 +211,7 @@ public class EntityGUI extends JFrame {
 
         // Añadir el panel al JFrame
         this.add(panel);
-    }
+    }*/
 
     private void bindData(){
         Iterable<WeaponType> entityIterable = weaponTypeRepositoryEntity.findAll();
