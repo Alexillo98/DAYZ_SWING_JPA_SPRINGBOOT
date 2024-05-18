@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponKindController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dayz/controller/WeaponTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d06a4957-ca56-4aef-8ed8-e7b9590c41fd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d06a4957-ca56-4aef-8ed8-e7b9590c41fd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. Falta integrar la API.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/SimpleDialogApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/SimpleDialogApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryPaging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/repository/WeaponRepositoryPaging.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/EntityGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715800087976</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. Falta integrar la API.">
+      <option name="closed" value="true" />
+      <created>1716046369743</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716046369743</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +176,8 @@
     <MESSAGE value="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar." />
     <MESSAGE value="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.---API NO FUNCIONA---" />
     <MESSAGE value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API." />
-    <option name="LAST_COMMIT_MESSAGE" value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Falta mostrar informacion del KIND y del TYPE. Falta integrar la API." />
+    <MESSAGE value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. Falta integrar la API." />
+    <option name="LAST_COMMIT_MESSAGE" value="Swing + Jpa + Swing. API funciona correctamente. APP funciona correctamente. Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. Falta integrar la API." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

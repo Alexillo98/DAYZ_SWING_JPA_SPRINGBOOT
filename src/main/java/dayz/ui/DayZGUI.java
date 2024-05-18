@@ -39,9 +39,6 @@ public class DayZGUI extends JFrame {
     private JTextField kindField;
     private JTextField typeField;
 
-    private JButton botonSiguiente;
-    private JButton botonAnterior;
-
     private JLabel l;
 
     public DayZGUI(AppService appService, WeaponController weaponController) {
@@ -85,7 +82,7 @@ public class DayZGUI extends JFrame {
 
         // Panel superior
         JPanel topPanel = new JPanel();
-        topPanel.setBackground(Color.RED);
+        topPanel.setBackground(Color.LIGHT_GRAY);
         topPanel.setBounds(0, 0, 775, 300);
         tab1.add(topPanel);
 
@@ -126,7 +123,7 @@ public class DayZGUI extends JFrame {
 
         JPanel leftVerticalPanel = new JPanel();
         leftVerticalPanel.setLayout(new BorderLayout());
-        leftVerticalPanel.setBackground(Color.GREEN);
+/*        leftVerticalPanel.setBackground(Color.GREEN);*/
         leftVerticalPanel.setBounds(0, 300, 75, 175);
         JPanel topFiller = new JPanel();
         JPanel bottomFiller = new JPanel();
@@ -162,7 +159,7 @@ public class DayZGUI extends JFrame {
 
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
-        centerHorizontalPanel.setBackground(Color.BLUE);
+        centerHorizontalPanel.setBackground(Color.WHITE);
         centerHorizontalPanel.setBounds(75, 300, 625, 175);
         centerHorizontalPanel.add(l_ID);
         centerHorizontalPanel.add(l_Name);
@@ -184,7 +181,7 @@ public class DayZGUI extends JFrame {
 
         JPanel rightVerticalPanel = new JPanel();
         rightVerticalPanel.setLayout(new BorderLayout());
-        rightVerticalPanel.setBackground(Color.GREEN);
+/*        rightVerticalPanel.setBackground(Color.GREEN);*/
         rightVerticalPanel.setBounds(700, 300, 75, 175);
         JPanel topFiller2 = new JPanel();
         JPanel bottomFiller2 = new JPanel();
