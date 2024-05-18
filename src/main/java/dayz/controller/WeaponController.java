@@ -41,8 +41,11 @@ public class WeaponController {
     }
 
     public Optional<Weapon> previous(){
-        if (currentPage == 0) return currentWeapon;
-        currentPage--;
+        if (currentPage == 0) {
+            return currentWeapon;
+        }else{
+            currentPage--;
+        }
         return getWeapon();
     }
 }
