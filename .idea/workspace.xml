@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="-&gt; Swing + Jpa + Swing. API funciona correctamente. &#10;-&gt; APP funciona correctamente. &#10;-&gt; Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. &#10;-&gt; Falta integrar la API.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponKind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponKind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/entity/WeaponType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dayz.sqlite" afterDir="false" />
     </list>
@@ -124,7 +122,7 @@
       <workItem from="1716047253927" duration="219000" />
       <workItem from="1716047786308" duration="246000" />
       <workItem from="1716048239038" duration="1505000" />
-      <workItem from="1716105640109" duration="19220000" />
+      <workItem from="1716105640109" duration="23681000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.">
       <option name="closed" value="true" />
@@ -214,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716121628990</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="-&gt; Swing + Jpa + Swing. API funciona correctamente. &#10;-&gt; APP funciona correctamente. &#10;-&gt; Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. &#10;-&gt; Falta integrar la API.">
+      <option name="closed" value="true" />
+      <created>1716127688261</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716127688261</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

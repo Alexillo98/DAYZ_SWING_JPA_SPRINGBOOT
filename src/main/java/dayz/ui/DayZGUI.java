@@ -13,8 +13,10 @@ import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.font.ImageGraphicAttribute;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -50,6 +52,7 @@ public class DayZGUI extends JFrame {
     private JLabel imageLabel;
     private JLabel l_Country;
     private JLabel l_imageLink;
+    private JLabel bannerLabel;
     private JButton newButton;
 
     public DayZGUI(AppService appService, WeaponController weaponController) throws IOException {
@@ -66,7 +69,7 @@ public class DayZGUI extends JFrame {
 
         // Configuración básica de la ventana
         setTitle("DAYZ COUNTRIES");
-        setSize(795, 540);
+        setSize(795, 690);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -82,12 +85,13 @@ public class DayZGUI extends JFrame {
         kindField = new JTextField(10);
         typeField = new JTextField(10);
         imageLabel = new JLabel();
+        bannerLabel = new JLabel();
         l_Country = new JLabel();
         countryField = new JTextField(10);
         imageLinkField = new JTextField(10);
     }
 
-    private void layoutComponents() {
+    private void layoutComponents() throws IOException {
         // Crear el componente de pestañas
         JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -95,9 +99,24 @@ public class DayZGUI extends JFrame {
         JPanel tab1 = new JPanel();
         tab1.setLayout(null);  // Usar un layout nulo para posicionar los paneles manualmente
 
+        //Banner
+        JPanel bannerPanel = new JPanel(new BorderLayout());
+        bannerPanel.setBounds(0,0,795,150);
+        bannerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        Border lineBorder = BorderFactory.createLineBorder(Color.BLACK,2);
+        bannerPanel.setBorder(lineBorder);
+        bannerPanel.add(bannerLabel);
+        tab1.add(bannerPanel);
+
+        File file = new File("src/main/resources/banner.png");
+        Image originalImage = ImageIO.read(file);
+        Image scaledImage = originalImage.getScaledInstance(795,150,Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(scaledImage);
+        bannerLabel.setIcon(icon);
+
         // Panel superior
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBounds(0, 0, 775, 300);
+        topPanel.setBounds(0, 150, 775, 300);
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         topPanel.add(imageLabel);
         tab1.add(topPanel,BorderLayout.CENTER);
@@ -112,7 +131,7 @@ public class DayZGUI extends JFrame {
 
         JPanel leftVerticalPanel = new JPanel();
         leftVerticalPanel.setLayout(new BorderLayout());
-        leftVerticalPanel.setBounds(0, 300, 75, 175);
+        leftVerticalPanel.setBounds(0, 450, 75, 175);
         JPanel topFiller = new JPanel();
         JPanel bottomFiller = new JPanel();
         leftVerticalPanel.add(topFiller,BorderLayout.NORTH);
@@ -173,7 +192,7 @@ public class DayZGUI extends JFrame {
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
         centerHorizontalPanel.setBackground(Color.WHITE);
-        centerHorizontalPanel.setBounds(75, 300, 625, 175);
+        centerHorizontalPanel.setBounds(75, 450, 625, 175);
         centerHorizontalPanel.add(l_ID);
         centerHorizontalPanel.add(l_Name);
         centerHorizontalPanel.add(l_Kind);
@@ -213,7 +232,7 @@ public class DayZGUI extends JFrame {
         JPanel rightVerticalPanel = new JPanel();
         rightVerticalPanel.setLayout(new BorderLayout());
 /*        rightVerticalPanel.setBackground(Color.GREEN);*/
-        rightVerticalPanel.setBounds(700, 300, 75, 175);
+        rightVerticalPanel.setBounds(700, 450, 75, 175);
         JPanel topFiller2 = new JPanel();
         JPanel bottomFiller2 = new JPanel();
         rightVerticalPanel.add(topFiller2,BorderLayout.NORTH);
@@ -324,6 +343,9 @@ public class DayZGUI extends JFrame {
         this.weaponRepositoryEntity.save(weapon);
 
         JOptionPane.showMessageDialog(this, "ARMA GUARDADA!");
+
+        countryField.setText("");
+        imageLinkField.setText("");
     }
 
 }
