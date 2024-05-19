@@ -2,6 +2,8 @@ package dayz.ui;
 
 import dayz.controller.WeaponController;
 import dayz.entity.Weapon;
+import dayz.entity.WeaponKind;
+import dayz.entity.WeaponType;
 import dayz.repository.WeaponKindRepositoryEntity;
 import dayz.repository.WeaponRepositoryEntity;
 import dayz.repository.WeaponRepositoryPaging;
@@ -41,9 +43,13 @@ public class DayZGUI extends JFrame {
     private JTextField nameField;
     private JTextField kindField;
     private JTextField typeField;
+    private JTextField countryField;
+    private JTextField imageLinkField;
 
     private JLabel l;
     private JLabel imageLabel;
+    private JLabel l_Country;
+    private JLabel l_imageLink;
     private JButton newButton;
 
     public DayZGUI(AppService appService, WeaponController weaponController) throws IOException {
@@ -66,9 +72,8 @@ public class DayZGUI extends JFrame {
         setResizable(false);
 
         initComponents();
-        updateFields();
         layoutComponents();
-
+        updateFields();
     }
 
     private void initComponents(){
@@ -77,6 +82,9 @@ public class DayZGUI extends JFrame {
         kindField = new JTextField(10);
         typeField = new JTextField(10);
         imageLabel = new JLabel();
+        l_Country = new JLabel();
+        countryField = new JTextField(10);
+        imageLinkField = new JTextField(10);
     }
 
     private void layoutComponents() {
@@ -146,8 +154,21 @@ public class DayZGUI extends JFrame {
 /*        typeField.setEnabled(false);*/
         typeField.setBounds(75,125,200,30);
 
+        l_Country = new JLabel("PAIS: ");
+        l_Country.setBounds(385, 5, 100, 30);
+        countryField.setBackground(Color.GRAY);
+        countryField.setBounds(420,5,200,30);
+
+        l_imageLink = new JLabel("URL: ");
+        l_imageLink.setBounds(385,45,200,30);
+        imageLinkField.setBackground(Color.GRAY);
+        imageLinkField.setBounds(420,45,200,30);
+
         JButton newButton= new JButton("AÑADIR");
         newButton.setBounds(280,5,100,30);
+
+        JButton saveButton = new JButton("GUARDAR");
+        saveButton.setBounds(280,45,100,30);
 
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
@@ -157,11 +178,21 @@ public class DayZGUI extends JFrame {
         centerHorizontalPanel.add(l_Name);
         centerHorizontalPanel.add(l_Kind);
         centerHorizontalPanel.add(l_Type);
+        centerHorizontalPanel.add(l_Country);
+        centerHorizontalPanel.add(l_imageLink);
         centerHorizontalPanel.add(idfield);
         centerHorizontalPanel.add(nameField);
         centerHorizontalPanel.add(kindField);
         centerHorizontalPanel.add(typeField);
+        centerHorizontalPanel.add(countryField);
+        centerHorizontalPanel.add(imageLinkField);
         centerHorizontalPanel.add(newButton);
+        centerHorizontalPanel.add(saveButton);
+        try {
+            saveButton.addActionListener(e -> saveEntity());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         newButton.addActionListener(e -> {
             try {
                 newEntity();
@@ -223,7 +254,10 @@ public class DayZGUI extends JFrame {
             this.kindField.setEnabled(false);
             this.typeField.setText(this.weapon.getWeapon_types().getName());
             this.typeField.setEnabled(false);
-
+            this.countryField.setVisible(false);
+            this.l_Country.setVisible(false);
+            this.imageLinkField.setVisible(false);
+            this.l_imageLink.setVisible(false);
         }else {
             if (this.entityState == EntityGUI.GUI_STATES.NEW.ordinal()){
                 this.entityState = EntityGUI.GUI_STATES.CANCEL.ordinal();
@@ -238,6 +272,10 @@ public class DayZGUI extends JFrame {
             this.kindField.setEnabled(true);
             this.typeField.setText("");
             this.typeField.setEnabled(true);
+            this.countryField.setVisible(true);
+            this.l_Country.setVisible(true);
+            this.imageLinkField.setVisible(true);
+            this.l_imageLink.setVisible(true);
         }
         updateImage();
     }
@@ -269,6 +307,25 @@ public class DayZGUI extends JFrame {
         this.weapon = null;
         updateFields();
     }
+
+    private void saveEntity(){
+        this.weapon = new Weapon();
+        weapon.setId(Long.valueOf(idfield.getText()));
+        weapon.setName(nameField.getText());
+        weapon.setCountry(countryField.getText());
+        weapon.setImgLink(imageLinkField.getText());
+/*        WeaponKind wk = new WeaponKind(Long.valueOf(kindField.getText()),);*/
+/*        weapon.setWeapon_kinds();*/
+        WeaponKind wk = new WeaponKind(Long.valueOf(kindField.getText()));
+        weapon.setWeapon_kinds(wk);
+        WeaponType wt = new WeaponType(Long.valueOf(typeField.getText()));
+        weapon.setWeapon_types(wt);
+        this.entityState = GUI_STATES.EXISTING.ordinal();
+        this.weaponRepositoryEntity.save(weapon);
+
+        JOptionPane.showMessageDialog(this, "ARMA GUARDADA!");
+    }
+
 }
 
 /*        // Añadir la imagen del arma

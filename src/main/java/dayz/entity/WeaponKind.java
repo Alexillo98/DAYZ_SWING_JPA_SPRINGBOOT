@@ -12,7 +12,16 @@ public class WeaponKind {
     private String name;
 
     // Add getters and setters here
+    public WeaponKind(){}
 
+    public WeaponKind(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public WeaponKind(Long id){
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

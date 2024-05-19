@@ -13,6 +13,17 @@ public class WeaponType {
 
     // Add getters and setters here
 
+    public WeaponType (){}
+
+    public WeaponType(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public WeaponType(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
