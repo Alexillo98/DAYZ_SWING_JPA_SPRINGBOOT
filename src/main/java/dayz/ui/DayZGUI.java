@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.font.ImageGraphicAttribute;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 @SuppressWarnings("serial")
@@ -40,8 +43,9 @@ public class DayZGUI extends JFrame {
     private JTextField typeField;
 
     private JLabel l;
+    private JLabel imageLabel;
 
-    public DayZGUI(AppService appService, WeaponController weaponController) {
+    public DayZGUI(AppService appService, WeaponController weaponController) throws IOException {
 
         this.weaponRepositoryEntity = appService.getWeaponRepositoryEntity();
         this.weapon = weaponRepositoryEntity.findFirstByOrderByIdAsc();
@@ -63,6 +67,7 @@ public class DayZGUI extends JFrame {
         initComponents();
         updateFields();
         layoutComponents();
+
     }
 
     private void initComponents(){
@@ -70,6 +75,7 @@ public class DayZGUI extends JFrame {
         nameField = new JTextField(10);
         kindField = new JTextField(10);
         typeField = new JTextField(10);
+        imageLabel = new JLabel();
     }
 
     private void layoutComponents() {
@@ -81,26 +87,11 @@ public class DayZGUI extends JFrame {
         tab1.setLayout(null);  // Usar un layout nulo para posicionar los paneles manualmente
 
         // Panel superior
-        JPanel topPanel = new JPanel();
-        topPanel.setBackground(Color.LIGHT_GRAY);
+        JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBounds(0, 0, 775, 300);
-        tab1.add(topPanel);
-
-        // Añadir la imagen del arma
-        JLabel imageLabel = new JLabel();
-        imageLabel.setBounds(0, 0, 775, 300);
-
-        // Cargar la imagen desde una URL
-        try {
-            URL url = new URL("https://static.wikia.nocookie.net/dayz_gamepedia/images/e/e6/AugShort.png/revision/latest?cb=20211104175243"); // Reemplaza con la URL de tu imagen
-            Image originalImage = ImageIO.read(url);
-            Image scaledImage = originalImage.getScaledInstance(775, 300, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            imageLabel.setIcon(icon);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         topPanel.add(imageLabel);
+        tab1.add(topPanel,BorderLayout.CENTER);
 
         // Panel vertical izquierdo
 
@@ -110,20 +101,8 @@ public class DayZGUI extends JFrame {
         ImageIcon resizedIconAnterior = new ImageIcon(resizeIcon);
         botonAnterior.setIcon(resizedIconAnterior);
 
-/*        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.anchor = GridBagConstraints.CENTER;
-
-        // Añadir un relleno para centrar verticalmente el botón
-        gbc.insets = new Insets(5, 10, 5, 10); // Ajusta el valor superior e inferior según sea necesario*/
-
         JPanel leftVerticalPanel = new JPanel();
         leftVerticalPanel.setLayout(new BorderLayout());
-/*        leftVerticalPanel.setBackground(Color.GREEN);*/
         leftVerticalPanel.setBounds(0, 300, 75, 175);
         JPanel topFiller = new JPanel();
         JPanel bottomFiller = new JPanel();
@@ -131,7 +110,13 @@ public class DayZGUI extends JFrame {
         topFiller.setLayout(null);
         leftVerticalPanel.add(bottomFiller,BorderLayout.SOUTH);
         bottomFiller.setLayout(null);
-        botonAnterior.addActionListener(e -> previous());
+        botonAnterior.addActionListener(e -> {
+            try {
+                previous();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         leftVerticalPanel.add(botonAnterior);
         tab1.add(leftVerticalPanel);
 
@@ -189,7 +174,13 @@ public class DayZGUI extends JFrame {
         topFiller2.setLayout(null);
         rightVerticalPanel.add(bottomFiller2,BorderLayout.SOUTH);
         bottomFiller2.setLayout(null);
-        botonSiguiente.addActionListener(e -> next());
+        botonSiguiente.addActionListener(e -> {
+            try {
+                next();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         rightVerticalPanel.add(botonSiguiente);
         tab1.add(rightVerticalPanel);
 
@@ -204,7 +195,7 @@ public class DayZGUI extends JFrame {
         // Añadir el tabbedPane a la ventana
         add(tabbedPane);
     }
-    private void updateFields(){
+    private void updateFields() throws IOException {
         if (this.weapon != null){
 
             this.entityState = EntityGUI.GUI_STATES.EXISTING.ordinal();
@@ -221,15 +212,60 @@ public class DayZGUI extends JFrame {
                 this.entityState = EntityGUI.GUI_STATES.NEW.ordinal();
             }
         }
+        updateImage();
     }
 
-    private void next(){
+    private void updateImage() throws IOException {
+        if (this.weapon != null && this.weapon.getImgLink() != null){
+        URL url = new URL(this.weapon.getImgLink());
+        Image originalImage =ImageIO.read(url);
+        Image scaledImage = originalImage.getScaledInstance(750,300,Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(scaledImage);
+        imageLabel.setIcon(icon);
+/*        setTitle("Prueba");*/ //Funciona, por lo que la imagen carga.
+        }else {
+            imageLabel.setIcon(null);
+        }
+    }
+
+    private void next() throws IOException {
             this.weapon = weaponController.next().orElse(null);
             updateFields();
     }
 
-    private void previous(){
+    private void previous() throws IOException {
         this.weapon = weaponController.previous().orElse(null);
         updateFields();
     }
 }
+
+/*        // Añadir la imagen del arma
+        JLabel imageLabel = new JLabel();
+        imageLabel.setBounds(0, 0, 775, 300);
+
+        // Cargar la imagen desde una URL
+        try {
+            URL url = new URL("https://static.wikia.nocookie.net/dayz_gamepedia/images/e/e6/AugShort.png/revision/latest?cb=20211104175243"); // Reemplaza con la URL de tu imagen
+            Image originalImage = ImageIO.read(url);
+            Image scaledImage = originalImage.getScaledInstance(775, 300, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(scaledImage);
+            imageLabel.setIcon(icon);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        topPanel.add(imageLabel);*/
+
+/*        leftVerticalPanel.setBackground(Color.GREEN);*/
+
+/*        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        // Añadir un relleno para centrar verticalmente el botón
+        gbc.insets = new Insets(5, 10, 5, 10); // Ajusta el valor superior e inferior según sea necesario*/
+
+/*        topPanel.setBackground(Color.LIGHT_GRAY);*/
