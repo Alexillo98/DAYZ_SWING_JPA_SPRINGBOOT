@@ -44,6 +44,7 @@ public class DayZGUI extends JFrame {
 
     private JLabel l;
     private JLabel imageLabel;
+    private JButton newButton;
 
     public DayZGUI(AppService appService, WeaponController weaponController) throws IOException {
 
@@ -123,24 +124,30 @@ public class DayZGUI extends JFrame {
         // Panel horizontal central
         JLabel l_ID = new JLabel("ID: ");
         l_ID.setBounds(5, 5, 100, 30);
-        idfield.setEnabled(false);
-        idfield.setBounds(45,5,200,30);
+/*        idfield.setEnabled(false);*/
+        idfield.setBackground(Color.GRAY);
+        idfield.setBounds(75,5,200,30);
 
-        JLabel l_Name = new JLabel("NAME: ");
+        JLabel l_Name = new JLabel("NOMBRE: ");
         l_Name.setBounds(5, 45, 100, 30);
-        nameField.setEnabled(true);
-        nameField.setBounds(45,45,200,30);
+        nameField.setBackground(Color.GRAY);
+/*        nameField.setEnabled(true);*/
+        nameField.setBounds(75,45,200,30);
 
-        JLabel l_Kind = new JLabel("KIND: ");
+        JLabel l_Kind = new JLabel("CLASE: ");
         l_Kind.setBounds(5, 85, 100, 30);
-        kindField.setEnabled(false);
-        kindField.setBounds(45,85,200,30);
+        kindField.setBackground(Color.GRAY);
+/*        kindField.setEnabled(false);*/
+        kindField.setBounds(75,85,200,30);
 
-        JLabel l_Type = new JLabel("TYPE: ");
+        JLabel l_Type = new JLabel("TIPO: ");
         l_Type.setBounds(5, 125, 100, 30);
-        typeField.setEnabled(false);
-        typeField.setBounds(45,125,200,30);
+        typeField.setBackground(Color.GRAY);
+/*        typeField.setEnabled(false);*/
+        typeField.setBounds(75,125,200,30);
 
+        JButton newButton= new JButton("AÑADIR");
+        newButton.setBounds(280,5,100,30);
 
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
@@ -154,6 +161,14 @@ public class DayZGUI extends JFrame {
         centerHorizontalPanel.add(nameField);
         centerHorizontalPanel.add(kindField);
         centerHorizontalPanel.add(typeField);
+        centerHorizontalPanel.add(newButton);
+        newButton.addActionListener(e -> {
+            try {
+                newEntity();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         tab1.add(centerHorizontalPanel);
 
         // Panel vertical derecho
@@ -201,9 +216,13 @@ public class DayZGUI extends JFrame {
             this.entityState = EntityGUI.GUI_STATES.EXISTING.ordinal();
 
             this.idfield.setText(this.weapon.getId().toString());
+            this.idfield.setEnabled(false);
             this.nameField.setText(this.weapon.getName());
+            this.nameField.setEnabled(false);
             this.kindField.setText(this.weapon.getWeapon_kinds().getName());
+            this.kindField.setEnabled(false);
             this.typeField.setText(this.weapon.getWeapon_types().getName());
+            this.typeField.setEnabled(false);
 
         }else {
             if (this.entityState == EntityGUI.GUI_STATES.NEW.ordinal()){
@@ -211,6 +230,14 @@ public class DayZGUI extends JFrame {
             }else {
                 this.entityState = EntityGUI.GUI_STATES.NEW.ordinal();
             }
+            this.idfield.setText(String.valueOf(weaponRepositoryPaging.countAllRecords() + 1));
+            this.idfield.setEnabled(false);
+            this.nameField.setText("");
+            this.nameField.setEnabled(true);
+            this.kindField.setText("");
+            this.kindField.setEnabled(true);
+            this.typeField.setText("");
+            this.typeField.setEnabled(true);
         }
         updateImage();
     }
@@ -235,6 +262,11 @@ public class DayZGUI extends JFrame {
 
     private void previous() throws IOException {
         this.weapon = weaponController.previous().orElse(null);
+        updateFields();
+    }
+
+    private void newEntity() throws IOException {
+        this.weapon = null;
         updateFields();
     }
 }
