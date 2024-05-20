@@ -54,6 +54,9 @@ public class DayZGUI extends JFrame {
     private JLabel l_imageLink;
     private JLabel bannerLabel;
     private JButton newButton;
+    private JButton cancelButton;
+
+    private Weapon actualWeapon;
 
     public DayZGUI(AppService appService, WeaponController weaponController) throws IOException {
 
@@ -64,6 +67,7 @@ public class DayZGUI extends JFrame {
         this.weaponKindRepositoryEntity = appService.getWeaponKindRepositoryEntity();
         this.weaponTypeRepositoryEntity = appService.getWeaponTypeRepositoryEntity();
         this.appService = appService;
+        this.weaponController.setWeapon(this.weapon);
 
         JLabel l;
 
@@ -89,6 +93,7 @@ public class DayZGUI extends JFrame {
         l_Country = new JLabel();
         countryField = new JTextField(10);
         imageLinkField = new JTextField(10);
+        cancelButton = new JButton();
     }
 
     private void layoutComponents() throws IOException {
@@ -128,16 +133,22 @@ public class DayZGUI extends JFrame {
         Image resizeIcon = iconAnterior.getImage().getScaledInstance(45,40,Image.SCALE_SMOOTH);
         ImageIcon resizedIconAnterior = new ImageIcon(resizeIcon);
         botonAnterior.setIcon(resizedIconAnterior);
+        botonAnterior.setBounds(2,0,70,87);
+
+        JButton botonFirst = new JButton("<<<");
+        botonFirst.setBounds(2,87,70,87);
 
         JPanel leftVerticalPanel = new JPanel();
-        leftVerticalPanel.setLayout(new BorderLayout());
-        leftVerticalPanel.setBounds(0, 450, 75, 175);
+        leftVerticalPanel.setLayout(null);
+        leftVerticalPanel.setBounds(0, 450, 75, 175);/*
         JPanel topFiller = new JPanel();
         JPanel bottomFiller = new JPanel();
         leftVerticalPanel.add(topFiller,BorderLayout.NORTH);
-        topFiller.setLayout(null);
-        leftVerticalPanel.add(bottomFiller,BorderLayout.SOUTH);
-        bottomFiller.setLayout(null);
+        topFiller.setLayout(null);*/
+        leftVerticalPanel.add(botonAnterior);
+        leftVerticalPanel.add(botonFirst);
+/*        leftVerticalPanel.add(bottomFiller,BorderLayout.SOUTH);
+        bottomFiller.setLayout(null);*/
         botonAnterior.addActionListener(e -> {
             try {
                 previous();
@@ -146,6 +157,14 @@ public class DayZGUI extends JFrame {
             }
         });
         leftVerticalPanel.add(botonAnterior);
+        botonFirst.addActionListener(e -> {
+            try {
+                first();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        leftVerticalPanel.add(botonFirst);
         tab1.add(leftVerticalPanel);
 
         // Panel horizontal central
@@ -186,8 +205,15 @@ public class DayZGUI extends JFrame {
         JButton newButton= new JButton("AÑADIR");
         newButton.setBounds(280,5,100,30);
 
-        JButton saveButton = new JButton("GUARDAR");
+        JButton saveButton = new JButton("GUARDA");
         saveButton.setBounds(280,45,100,30);
+
+        JButton deleteButton = new JButton("ELIMINAR");
+        deleteButton.setBounds(280,85,100,30);
+
+        cancelButton = new JButton("CANCELA");
+        cancelButton.setBounds(280,125,100,30);
+        cancelButton.setForeground(Color.RED);
 
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
@@ -207,8 +233,30 @@ public class DayZGUI extends JFrame {
         centerHorizontalPanel.add(imageLinkField);
         centerHorizontalPanel.add(newButton);
         centerHorizontalPanel.add(saveButton);
+        centerHorizontalPanel.add(deleteButton);
+        centerHorizontalPanel.add(cancelButton);
+        cancelButton.addActionListener(e -> {
+            try {
+                cancel();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        deleteButton.addActionListener(e -> {
+            try {
+                deleteEntity();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         try {
-            saveButton.addActionListener(e -> saveEntity());
+            saveButton.addActionListener(e -> {
+                try {
+                    saveEntity();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -228,17 +276,22 @@ public class DayZGUI extends JFrame {
         Image resizeIcon2 = iconSiguiente.getImage().getScaledInstance(45,40,Image.SCALE_SMOOTH);
         ImageIcon resizedIconSiguiente = new ImageIcon(resizeIcon2);
         botonSiguiente.setIcon(resizedIconSiguiente);
+        botonSiguiente.setBounds(2,0,70,87);
+
+        JButton botonLast = new JButton(">>>");
+        botonLast.setBounds(2,87,70,87);
 
         JPanel rightVerticalPanel = new JPanel();
-        rightVerticalPanel.setLayout(new BorderLayout());
+        rightVerticalPanel.setLayout(null);
 /*        rightVerticalPanel.setBackground(Color.GREEN);*/
         rightVerticalPanel.setBounds(700, 450, 75, 175);
-        JPanel topFiller2 = new JPanel();
-        JPanel bottomFiller2 = new JPanel();
-        rightVerticalPanel.add(topFiller2,BorderLayout.NORTH);
+
+/*        JPanel topFiller2 = new JPanel();
+        JPanel bottomFiller2 = new JPanel();*/
+/*        rightVerticalPanel.add(topFiller2,BorderLayout.NORTH);
         topFiller2.setLayout(null);
         rightVerticalPanel.add(bottomFiller2,BorderLayout.SOUTH);
-        bottomFiller2.setLayout(null);
+        bottomFiller2.setLayout(null);*/
         botonSiguiente.addActionListener(e -> {
             try {
                 next();
@@ -247,6 +300,14 @@ public class DayZGUI extends JFrame {
             }
         });
         rightVerticalPanel.add(botonSiguiente);
+        botonLast.addActionListener(e -> {
+            try {
+                last();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        rightVerticalPanel.add(botonLast);
         tab1.add(rightVerticalPanel);
 
         // Añadir la primera pestaña al tabbedPane
@@ -277,13 +338,14 @@ public class DayZGUI extends JFrame {
             this.l_Country.setVisible(false);
             this.imageLinkField.setVisible(false);
             this.l_imageLink.setVisible(false);
+            this.cancelButton.setVisible(false);
         }else {
             if (this.entityState == EntityGUI.GUI_STATES.NEW.ordinal()){
                 this.entityState = EntityGUI.GUI_STATES.CANCEL.ordinal();
             }else {
                 this.entityState = EntityGUI.GUI_STATES.NEW.ordinal();
             }
-            this.idfield.setText(String.valueOf(weaponRepositoryPaging.countAllRecords() + 1));
+            this.idfield.setText(String.valueOf(weaponRepositoryPaging.biggerID() + 1/*countAllRecords() + 1*/));
             this.idfield.setEnabled(false);
             this.nameField.setText("");
             this.nameField.setEnabled(true);
@@ -295,6 +357,7 @@ public class DayZGUI extends JFrame {
             this.l_Country.setVisible(true);
             this.imageLinkField.setVisible(true);
             this.l_imageLink.setVisible(true);
+            this.cancelButton.setVisible(true);
         }
         updateImage();
     }
@@ -302,7 +365,7 @@ public class DayZGUI extends JFrame {
     private void updateImage() throws IOException {
         if (this.weapon != null && this.weapon.getImgLink() != null){
         URL url = new URL(this.weapon.getImgLink());
-        Image originalImage =ImageIO.read(url);
+        Image originalImage = ImageIO.read(url);
         Image scaledImage = originalImage.getScaledInstance(750,300,Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(scaledImage);
         imageLabel.setIcon(icon);
@@ -323,18 +386,17 @@ public class DayZGUI extends JFrame {
     }
 
     private void newEntity() throws IOException {
+        actualWeapon = this.weapon;
         this.weapon = null;
         updateFields();
     }
 
-    private void saveEntity(){
+    private void saveEntity() throws IOException {
         this.weapon = new Weapon();
         weapon.setId(Long.valueOf(idfield.getText()));
         weapon.setName(nameField.getText());
         weapon.setCountry(countryField.getText());
         weapon.setImgLink(imageLinkField.getText());
-/*        WeaponKind wk = new WeaponKind(Long.valueOf(kindField.getText()),);*/
-/*        weapon.setWeapon_kinds();*/
         WeaponKind wk = new WeaponKind(Long.valueOf(kindField.getText()));
         weapon.setWeapon_kinds(wk);
         WeaponType wt = new WeaponType(Long.valueOf(typeField.getText()));
@@ -346,8 +408,32 @@ public class DayZGUI extends JFrame {
 
         countryField.setText("");
         imageLinkField.setText("");
+
+        updateFields();
     }
 
+    private void deleteEntity() throws IOException {
+        if (this.weapon != null){
+            this.weaponRepositoryEntity.delete(this.weapon);
+            this.newEntity();
+            JOptionPane.showMessageDialog(this, "ARMA ELIMINADA!");
+        }
+    }
+
+    private void first() throws IOException {
+        this.weapon = weaponController.first().orElse(null);
+        updateFields();
+    }
+
+    private void last() throws IOException {
+        this.weapon = weaponController.last().orElse(null);
+        updateFields();
+    }
+
+    private void cancel() throws IOException {
+        this.weapon = actualWeapon;
+        updateFields();
+    }
 }
 
 /*        // Añadir la imagen del arma

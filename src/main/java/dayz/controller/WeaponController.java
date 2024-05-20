@@ -27,6 +27,10 @@ public class WeaponController {
         this.count = weaponRepositoryPaging.countAllRecords();
     }
 
+    public void setWeapon(Weapon weapon){
+        this.currentWeapon = Optional.of(weapon);
+    }
+
     public Optional<Weapon> getWeapon(){
         PageRequest pr = PageRequest.of(currentPage, 1);
         currentWeapon = Optional.of(weaponRepositoryPaging.findAll(pr).getContent().get(0));
@@ -46,6 +50,17 @@ public class WeaponController {
         }else{
             currentPage--;
         }
+        return getWeapon();
+    }
+
+    public Optional<Weapon> first(){
+        currentPage = 0;
+        return getWeapon();
+    }
+
+    public Optional<Weapon> last(){
+        this.count = weaponRepositoryPaging.countAllRecords();
+        currentPage = count - 1;
         return getWeapon();
     }
 }
