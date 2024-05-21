@@ -53,8 +53,10 @@ public class DayZGUI extends JFrame {
     private JLabel l_Country;
     private JLabel l_imageLink;
     private JLabel bannerLabel;
+    private JLabel bannerLabel2;
     private JButton newButton;
     private JButton cancelButton;
+    private JProgressBar progressBar;
 
     private Weapon actualWeapon;
 
@@ -90,10 +92,12 @@ public class DayZGUI extends JFrame {
         typeField = new JTextField(10);
         imageLabel = new JLabel();
         bannerLabel = new JLabel();
+        bannerLabel2 = new JLabel();
         l_Country = new JLabel();
         countryField = new JTextField(10);
         imageLinkField = new JTextField(10);
         cancelButton = new JButton();
+        progressBar = new JProgressBar();
     }
 
     private void layoutComponents() throws IOException {
@@ -122,7 +126,7 @@ public class DayZGUI extends JFrame {
         // Panel superior
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBounds(0, 150, 775, 300);
-        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        imageLabel.setVerticalAlignment(SwingConstants.CENTER);
         topPanel.add(imageLabel);
         tab1.add(topPanel,BorderLayout.CENTER);
 
@@ -214,6 +218,12 @@ public class DayZGUI extends JFrame {
         cancelButton = new JButton("CANCELA");
         cancelButton.setBounds(280,125,100,30);
         cancelButton.setForeground(Color.RED);
+
+        progressBar = new JProgressBar();
+        progressBar.setBounds(240,125,100,30);
+        progressBar.setIndeterminate(true);
+        progressBar.setVisible(false);
+        tab1.add(progressBar);
 
         JPanel centerHorizontalPanel = new JPanel();
         centerHorizontalPanel.setLayout(null);
@@ -315,6 +325,45 @@ public class DayZGUI extends JFrame {
 
         // Crear una segunda pestaña vacía
         JPanel tab2 = new JPanel();
+        tab2.setLayout(null);
+
+        //PESTAÑA2: PANEL SUPERIOR
+
+        JPanel panelN = new JPanel();
+        panelN.setLayout(null);
+        panelN.setBounds(0,0,795,150);
+        tab2.add(panelN);
+
+        File file2 = new File("src/main/resources/banner.png");
+        Image originalImage2 = ImageIO.read(file2);
+        Image scaledImage2 = originalImage2.getScaledInstance(795,150,Image.SCALE_SMOOTH);
+        ImageIcon icon2 = new ImageIcon(scaledImage2);
+        bannerLabel2.setIcon(icon2);
+
+        JPanel bannerPanel2 = new JPanel(new BorderLayout());
+        bannerPanel2.setBounds(0,0,795,150);
+        bannerLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+        Border lineBorder2 = BorderFactory.createLineBorder(Color.BLACK,2);
+        bannerPanel2.setBorder(lineBorder2);
+        bannerPanel2.add(bannerLabel2);
+
+        panelN.add(bannerPanel2);
+
+        tab2.add(panelN);
+
+        //PESTAÑA2: PANEL IZQUIERDO
+
+        JPanel panelI = new JPanel();
+        panelI.setBounds(0,150,397,540);
+        panelI.setBackground(Color.blue);
+        tab2.add(panelI);
+
+        //PESTAÑA2: PANEL DERECHO
+
+        JPanel panelD = new JPanel();
+        panelD.setBounds(397,150,397,540);
+        panelD.setBackground(Color.GREEN);
+        tab2.add(panelD);
 
         tabbedPane.addTab("PAIS/BANDERA", tab2);
 
@@ -466,3 +515,11 @@ public class DayZGUI extends JFrame {
         gbc.insets = new Insets(5, 10, 5, 10); // Ajusta el valor superior e inferior según sea necesario*/
 
 /*        topPanel.setBackground(Color.LIGHT_GRAY);*/
+
+/*        SwingWorker<ImageIcon,Void> worker = new SwingWorker<ImageIcon, Void>() {
+            @Override
+            protected ImageIcon doInBackground() throws Exception {
+                progressBar.setVisible(true);
+
+            }
+        }*/

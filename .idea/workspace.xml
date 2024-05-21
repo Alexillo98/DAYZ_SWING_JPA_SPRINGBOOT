@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="-&gt; Swing + Jpa + Swing. API funciona correctamente. &#10;-&gt; APP funciona correctamente. &#10;-&gt; Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. &#10;-&gt; Falta integrar la API.&#10;-&gt; En el banner, si quiero poner que el bannerLabel.setHorizontalAlignment(Swing.CENTER) sea Swing.BOTTOM, me da error." />
+    <list default="true" id="eee23ff7-bbde-4401-8cf6-57d952142e5f" name="Changes" comment="-&gt; Swing + Jpa + Swing. API funciona correctamente. &#10;-&gt; APP funciona correctamente. &#10;-&gt; Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. &#10;-&gt; Falta integrar la API.&#10;-&gt; En el banner, si quiero poner que el bannerLabel.setHorizontalAlignment(Swing.CENTER) sea Swing.BOTTOM, me da error.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +64,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/DAW/PROGRAMACION/Dayz2",
+    "last_opened_file_path": "/home/INFORMATICA/alu10728702/Documents/PROGRAMACION/FicherosFormato",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -117,6 +120,8 @@
       <workItem from="1716105640109" duration="24283000" />
       <workItem from="1716133271519" duration="387000" />
       <workItem from="1716185189300" duration="8929000" />
+      <workItem from="1716204222842" duration="111000" />
+      <workItem from="1716273786241" duration="7014000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto + Base de datos. Se ejecuta correctamente. Abre una pequeña ventana con los botones de minimizar, maximizar y cerrar.">
       <option name="closed" value="true" />
@@ -238,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716194499543</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="-&gt; Swing + Jpa + Swing. API funciona correctamente. &#10;-&gt; APP funciona correctamente. &#10;-&gt; Al iniciar la app si le das por primera vez a anterior da null pero si le das primero a siguiente y luego a anterior no da problema. &#10;-&gt; Falta integrar la API.&#10;-&gt; En el banner, si quiero poner que el bannerLabel.setHorizontalAlignment(Swing.CENTER) sea Swing.BOTTOM, me da error.">
+      <option name="closed" value="true" />
+      <created>1716204321518</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716204321518</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +278,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/dayz/controller/WeaponController.java</url>
           <line>34</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dayz/ui/DayZGUI.java</url>
+          <line>351</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
