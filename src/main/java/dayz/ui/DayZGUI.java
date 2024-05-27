@@ -1,5 +1,7 @@
 package dayz.ui;
 
+import com.google.gson.Gson;
+import dayz.API.Country;
 import dayz.controller.WeaponController;
 import dayz.entity.Weapon;
 import dayz.entity.WeaponKind;
@@ -16,10 +18,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.font.ImageGraphicAttribute;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 @SuppressWarnings("serial")
 @Component
@@ -47,16 +52,18 @@ public class DayZGUI extends JFrame {
     private JTextField typeField;
     private JTextField countryField;
     private JTextField imageLinkField;
-
     private JLabel l;
     private JLabel imageLabel;
     private JLabel l_Country;
     private JLabel l_imageLink;
     private JLabel bannerLabel;
     private JLabel bannerLabel2;
+    private JLabel flagLabel;
     private JButton newButton;
     private JButton cancelButton;
     private JProgressBar progressBar;
+
+    private JEditorPane altPane;
 
     private Weapon actualWeapon;
 
@@ -353,16 +360,34 @@ public class DayZGUI extends JFrame {
 
         //PESTAÑA2: PANEL IZQUIERDO
 
+        flagLabel = new JLabel();
+        flagLabel.setBounds(100,150,200,175);
+        flagLabel.setBackground(Color.YELLOW);
+        flagLabel.setOpaque(true);
+
         JPanel panelI = new JPanel();
+        panelI.setLayout(null);
         panelI.setBounds(0,150,397,540);
-        panelI.setBackground(Color.blue);
+/*        panelI.setBackground(Color.blue);*/
+        panelI.add(flagLabel);
         tab2.add(panelI);
 
         //PESTAÑA2: PANEL DERECHO
 
+/*        Gson gson = new Gson();
+        URL countries = new URL("https://restcountries.com/v3.1/name/"+weapon.getCountry().toLowerCase()+"?fields=name,flags");
+        BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(), StandardCharsets.UTF_8));
+        Country[] c = gson.fromJson(in, Country[].class); //ES UN ARRAY DE OBJETOS*/
+
+        altPane = new JEditorPane();
+        altPane.setEditable(false);
+/*        altPane.setText("");*/
+        altPane.setBounds(400,250,300,400);
+
         JPanel panelD = new JPanel();
         panelD.setBounds(397,150,397,540);
         panelD.setBackground(Color.GREEN);
+        panelD.add(altPane);
         tab2.add(panelD);
 
         tabbedPane.addTab("PAIS/BANDERA", tab2);
@@ -409,6 +434,8 @@ public class DayZGUI extends JFrame {
             this.cancelButton.setVisible(true);
         }
         updateImage();
+        updateFlagImageInThread();
+        updateAltInThread();
     }
 
     private void updateImage() throws IOException {
@@ -424,6 +451,57 @@ public class DayZGUI extends JFrame {
         }
     }
 
+    private void updateAlt() throws IOException {
+         if (this.weapon != null && this.weapon.getCountry() != null){
+             Gson gson = new Gson();
+             URL countries = new URL("https://restcountries.com/v3.1/name/"+weapon.getCountry().toLowerCase()+"?fields=name,flags");
+             BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(), StandardCharsets.UTF_8));
+             Country[] c = gson.fromJson(in, Country[].class); //ES UN ARRAY DE OBJETOS
+             altPane.setText(c[0].getFlags().getAlt());
+         }else {
+             altPane.setText("");
+         }
+    }
+
+    private void updateFlagImage () throws IOException {
+        Gson gson = new Gson();
+        URL countries = new URL("https://restcountries.com/v3.1/name/"+weapon.getCountry().toLowerCase()+"?fields=name,flags");
+        BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(),StandardCharsets.UTF_8));
+        Country[] c = gson.fromJson(in, Country[].class);
+        URL flagURL = new URL(c[0].getFlags().getPng());
+        Image originalImage = ImageIO.read(flagURL);
+        Image scaledImage = originalImage.getScaledInstance(200,175,Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(scaledImage);
+        flagLabel.setIcon(imageIcon);
+    }
+
+    private void updateFlagImageInThread(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    updateFlagImage();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        thread.start();
+    }
+
+    private void updateAltInThread(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    updateAlt();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        thread.start();
+    }
     private void next() throws IOException {
             this.weapon = weaponController.next().orElse(null);
             updateFields();
