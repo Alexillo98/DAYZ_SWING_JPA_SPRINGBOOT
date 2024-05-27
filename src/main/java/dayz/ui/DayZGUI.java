@@ -2,6 +2,7 @@ package dayz.ui;
 
 import com.google.gson.Gson;
 import dayz.API.Country;
+import dayz.API.Country_code;
 import dayz.controller.WeaponController;
 import dayz.entity.Weapon;
 import dayz.entity.WeaponKind;
@@ -17,12 +18,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.font.ImageGraphicAttribute;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -52,6 +51,7 @@ public class DayZGUI extends JFrame {
     private JTextField typeField;
     private JTextField countryField;
     private JTextField imageLinkField;
+    private JTextField countryNameField;
     private JLabel l;
     private JLabel imageLabel;
     private JLabel l_Country;
@@ -361,15 +361,23 @@ public class DayZGUI extends JFrame {
         //PESTAÑA2: PANEL IZQUIERDO
 
         flagLabel = new JLabel();
-        flagLabel.setBounds(100,150,200,175);
+        flagLabel.setBounds(50,150,300,175);
         flagLabel.setBackground(Color.YELLOW);
         flagLabel.setOpaque(true);
+
+        countryNameField = new JTextField();
+        countryNameField.setEditable(false);
+        countryNameField.setBounds(50,50,300,50);
+        countryNameField.setBackground(Color.GRAY);
+        countryNameField.setOpaque(true);
+        countryNameField.setBorder(lineBorder2);
 
         JPanel panelI = new JPanel();
         panelI.setLayout(null);
         panelI.setBounds(0,150,397,540);
 /*        panelI.setBackground(Color.blue);*/
         panelI.add(flagLabel);
+        panelI.add(countryNameField);
         tab2.add(panelI);
 
         //PESTAÑA2: PANEL DERECHO
@@ -382,7 +390,8 @@ public class DayZGUI extends JFrame {
         altPane = new JEditorPane();
         altPane.setEditable(false);
 /*        altPane.setText("");*/
-        altPane.setBounds(400,250,300,400);
+        altPane.setBounds(5,250,300,400);
+
 
         JPanel panelD = new JPanel();
         panelD.setBounds(397,150,397,540);
@@ -436,6 +445,7 @@ public class DayZGUI extends JFrame {
         updateImage();
         updateFlagImageInThread();
         updateAltInThread();
+        updateCountryName();
     }
 
     private void updateImage() throws IOException {
@@ -453,51 +463,71 @@ public class DayZGUI extends JFrame {
 
     private void updateAlt() throws IOException {
          if (this.weapon != null && this.weapon.getCountry() != null){
+             altPane.setText("CARGANDO...[DEPENDIENDO DEL TRAFICO DE LA RED DE LA API ESTO PUEDE TARDAR MUCHO RATO O INCLUSO NO CARGAR]");
              Gson gson = new Gson();
              URL countries = new URL("https://restcountries.com/v3.1/name/"+weapon.getCountry().toLowerCase()+"?fields=name,flags");
              BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(), StandardCharsets.UTF_8));
              Country[] c = gson.fromJson(in, Country[].class); //ES UN ARRAY DE OBJETOS
              altPane.setText(c[0].getFlags().getAlt());
          }else {
-             altPane.setText("");
+             altPane.setText("FAILED TO LOAD! ");
          }
     }
 
-    private void updateFlagImage () throws IOException {
+    private void updateCountryName() throws IOException {
+        if (this.weapon != null && this.weapon.getCountry_code() != null){
+            Gson gson = new Gson();
+            URL codes = new URL ("https://flagcdn.com/es/codes.json");
+            BufferedReader in = new BufferedReader(new InputStreamReader(codes.openStream(), StandardCharsets.UTF_8));
+            Country_code cn = gson.fromJson(in, Country_code.class);
+            countryNameField.setText(cn.getCode()); // <--- ES NULO !!
+        }else {
+            countryNameField.setText("FALLO AL CARGAR!");
+        }
+    }
+
+
+
+/*    private void updateFlagImage () throws IOException {
         Gson gson = new Gson();
         URL countries = new URL("https://restcountries.com/v3.1/name/"+weapon.getCountry().toLowerCase()+"?fields=name,flags");
         BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(),StandardCharsets.UTF_8));
         Country[] c = gson.fromJson(in, Country[].class);
         URL flagURL = new URL(c[0].getFlags().getPng());
         Image originalImage = ImageIO.read(flagURL);
-        Image scaledImage = originalImage.getScaledInstance(200,175,Image.SCALE_SMOOTH);
+        Image scaledImage = originalImage.getScaledInstance(250,175,Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(scaledImage);
+        flagLabel.setIcon(imageIcon);
+    }*/
+    private void updateFlagImage () throws IOException {
+/*        Gson gson = new Gson();
+        URL countries = new URL("https://flagcdn.com/256x192/ua.png");
+        BufferedReader in = new BufferedReader(new InputStreamReader(countries.openStream(),StandardCharsets.UTF_8));
+        Country[] c = gson.fromJson(in, Country[].class);*/
+        URL flagURL = new URL("https://flagcdn.com/256x192/"+this.weapon.getCountry_code()+".png");
+        Image originalImage = ImageIO.read(flagURL);
+        Image scaledImage = originalImage.getScaledInstance(300,175,Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(scaledImage);
         flagLabel.setIcon(imageIcon);
     }
 
     private void updateFlagImageInThread(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    updateFlagImage();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        Thread thread = new Thread(() -> {
+            try {
+                updateFlagImage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
         thread.start();
     }
 
     private void updateAltInThread(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    updateAlt();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        Thread thread = new Thread(() -> {
+            try {
+                updateAlt();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
         thread.start();

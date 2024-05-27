@@ -14,6 +14,8 @@ public class Weapon {
 
     private String img_link;
 
+    private String country_code;
+
     @ManyToOne
     @JoinColumn(name = "weapontype")
     private WeaponType weapon_types;
@@ -71,5 +73,21 @@ public class Weapon {
 
     public void setImgLink(String imgLink) {
         this.img_link = imgLink;
+    }
+
+    public String getImg_link() {
+        return img_link;
+    }
+
+    public void setImg_link(String img_link) {
+        this.img_link = img_link;
+    }
+
+    public String getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
     }
 }

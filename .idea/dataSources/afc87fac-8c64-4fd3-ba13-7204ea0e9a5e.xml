@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="dayz">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.51">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.52">
     <root id="1">
       <ServerVersion>3.45.1</ServerVersion>
     </root>
@@ -499,7 +499,7 @@
     <routine id="190" parent="1" name="fts5"/>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-05-20.06:11:28</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-27.17:22:54</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1664,17 +1664,21 @@
       <DasType>TEXT|0s</DasType>
       <Position>6</Position>
     </column>
-    <foreign-key id="576" parent="558" name="fk_weaponType">
+    <column id="576" parent="558" name="country_code">
+      <DasType>TEXT|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="577" parent="558" name="fk_weaponType">
       <ColNames>weaponType</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>weapon_types</RefTableName>
     </foreign-key>
-    <foreign-key id="577" parent="558" name="fk_weaponKind">
+    <foreign-key id="578" parent="558" name="fk_weaponKind">
       <ColNames>weaponKind</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>weapon_kinds</RefTableName>
     </foreign-key>
-    <key id="578" parent="558">
+    <key id="579" parent="558">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
